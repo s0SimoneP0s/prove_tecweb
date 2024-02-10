@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Risultati della ricerca {% endblock %} 
+
+{% block content %} 
+
+<h1>  {{ titolo }} </h1>
+
+{% if object_list.count == 0 %}
+
+<p>
+La ricerca non ha portato a risultati. 
+</p>
+
+{% else %}
+
+    {% for p in object_list %}
+    <ul>
+        {{ p }}
+    </ul>
+    {% endfor %}
+
+    <p> Iscrizioni ai corsi </p>
+
+    {% for i in set_ins %}
+    <ul>
+     <a href="{% url  'iscrizioni:insegnamento' pk=i.pk %}">{{ i }}</a>
+    </ul>
+    {% endfor %}
+
+{% endif %}
+
+
+{% endblock %}

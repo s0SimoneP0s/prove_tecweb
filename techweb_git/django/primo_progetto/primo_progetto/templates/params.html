@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+
+
+    {% if get == True %} 
+
+    <p> {{ request.GET.nome }} </p>
+    <p> {{ request.GET.eta }} </p>
+
+<!--
+    {% for key, value in request.GET.items %}
+        {{ key }} = {{ value }}
+    {% endfor %}
+-->
+
+    {% else %}
+
+         <p>{{ request.resolver_match.kwargs.nome }} </p>
+         <p>{{ request.resolver_match.kwargs.eta }} </p>
+
+    {% endif %} 
+    
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} {{titolo}} {% endblock %} 
+
+{% block content %} 
+
+<h1> Lista di {{ view.get_model_name }} </h1>
+
+{% for p in object_list %}
+<ul>  
+    
+    {{ p.name }} {{ p.surname }} 
+    
+</ul>
+{% endfor %}
+
+<p> Il numero totale di iscrizioni è {{ view.get_totale_iscrizioni }} </p>
+
+{% endblock %}

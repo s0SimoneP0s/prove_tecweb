@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block head %} {% endblock %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+    <center>
+    <h1>{{title}}</h1>
+
+      {% if title == "Elimina Libro" and message == "" %}
+
+      <form action="/gestione/cancellalibro">
+        <label for="libro">Scegli un libro da cancellare:</label>
+        <select name="libro" id="libro">
+          {% for l in listalibri %}
+
+          <option>{{l.pk}}: {{l.autore}} {{l.titolo}}</option>
+
+          {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Elimina">
+      </form>
+
+      {% endif %}
+
+      {% if title == "Modifica Libro" and message == "" %}
+
+      <form action="/gestione/modificalibro/{{libro.titolo}}/{{libro.autore}}/">
+        <label>Modifica il libro:</label>
+        <label for="autore">Autore:</label><br>
+        <input type="text" id="autore" name="autore" value="{{libro.autore}}"><br>
+        <label for="titolo">Titolo:</label><br>
+        <input type="text" id="titolo" name="titolo" value="{{libro.titolo}}"><br>
+        <label for="pagine">Pagine:</label><br>
+        <input type="text" id="pagine" name="pagine" value="{{libro.pagine}}"><br>
+        <br><br>
+        <input type="submit" value="Modifica">
+      </form>
+
+      {% endif %}
+
+      {% if message != "" %}
+      <p> {{message}} </p>
+      <a href="{% url 'gestione:listalibri' %}">Lista Libri</a>
+      {% endif %}
+
+    </center>
+
+{% endblock %}

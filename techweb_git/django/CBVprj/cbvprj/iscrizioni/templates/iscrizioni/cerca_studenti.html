@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block head %} {% endblock %}
+
+{% block title %}Cerca Studenti{% endblock %}
+
+{% block content %}
+
+    <center>
+    <h1>Cerca studenti</h1>
+
+ 
+    <form method="post" action="/iscrizioni/cercastudente/">{% csrf_token %}
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" ><br>
+        <label for="surname">Surname:</label><br>
+        <input type="text" id="surname" name="surname" ><br>
+        <input type="submit" value="Cerca">
+      </form> 
+
+    </center>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<footer>
+Link utili <br>
+
+ <!--
+<p><a href="http://localhost:8000/welcome_path/Mario/25/">Welcome name, age!</a></p>
+-->
+
+{# Proviamo i diversi metodi per passare parametri agli url... #}
+
+<p><a href="{% url 'homepage' %}">Home Page</a></p>
+<p><a href="{% url 'welcomeuser' %}">Welcome, User</a></p>
+<p><a href="{% url 'paridispari'%}?num=7">Pari o Dispari?</a></p>
+<p><a href="{% url 'welcomepath' nome='Mario' eta=25 %}">Welcome name, age!</a></p>
+
+</footer>

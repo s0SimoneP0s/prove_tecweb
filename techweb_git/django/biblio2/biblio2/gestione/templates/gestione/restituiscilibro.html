@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block head %} 
+{% load static %}
+<link rel="stylesheet" type="text/css" href='{% static "/css/style.css" %}'>
+{% endblock %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+    <center>
+
+    <h1>{{title}}</h1>
+
+    {% if action == "lista" %}
+
+        {% if listacopie.count == 0 %}
+
+        <img src="{% static '/imgs/warning.png' %}" width="400" 
+        height="400" alt="warning!">
+
+        <p> Non ci sono copie da restituire </p>
+
+        {% endif %}
+
+        <ul>
+        {% for c in listacopie %}
+
+        <li>
+        {{c.pk}}: prestato il  {{c.data_prestito}}   
+        {# <a href="/gestione/restituzione/{{c.pk}}/">Seleziona</a> #}
+        <a href="{% url 'gestione:restfinal' c.pk %}">Seleziona</a>
+        </li>
+
+        {% endfor %}
+        </ul>
+   
+    {% else %}
+
+        {% if action == "scaduto" %}
+            <img src="{% static '/imgs/yellowcard.png' %}" width="400" 
+        height="400" alt="ammunito!">
+
+        <p> La prossima volta magari riportalo prima...</p>
+
+        {% endif %}
+
+        <p> Grazie! </p>
+
+    {% endif %}
+
+</center>
+
+{% include "gestione/gestfooter.html" %}
+        
+{% endblock %}

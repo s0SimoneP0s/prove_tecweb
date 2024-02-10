@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %} 
+{% load static %}
+<link rel="stylesheet" type="text/css" href='{% static "/css/style.css" %}'>
+{% endblock %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+    <center>
+    <h1>{{title}}</h1>
+
+  {% if message == "Non ci sono copie disponibili!" %}
+    <img src="{% static '/imgs/sad.png' %}" width="400" 
+     height="400" alt="Peccato!">
+  {% endif %}
+
+   <p> {{message}}</p>
+
+   </center>
+
+   {% include "gestione/gestfooter.html" %}
+        
+{% endblock %}
