@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'house_renting_app',
-    #'bootstrap4',
-    #'django_extensions',
+    'bootstrap4',
+    'django_extensions',
 
 ]
 
@@ -153,5 +153,19 @@ STATIC_URL = '/static/'
 STATIC_DIR =os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS = [STATIC_DIR]
 
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'house_renting_app/static'), # modificato per ogni app
+#    os.path.join(BASE_DIR, 'affitti/static'), # modificato per ogni app
+]
+
 MEDIA_URL='/media/'
 MEDIA_DIR=os.path.join(BASE_DIR,'media')
+
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

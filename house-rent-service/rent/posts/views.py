@@ -39,10 +39,22 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('home')
 
 
-# handle ajax request to update locations based on district
+## handle ajax request to update locations based on district
+#def get_location_data(request):
+#    print("execute successful")
+#    if request.is_ajax():
+#        html_response = ""
+#        obj = Area.objects.filter(
+#            district__district_name=request.POST.get('user_choice'))
+#
+#        for i in obj:
+#            html_response += '<option value="%s">%s</option>' % (
+#                i.pk, i.area_name)
+#        return HttpResponse(html_response)
+
 def get_location_data(request):
     print("execute successful")
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         html_response = ""
         obj = Area.objects.filter(
             district__district_name=request.POST.get('user_choice'))
@@ -51,6 +63,13 @@ def get_location_data(request):
             html_response += '<option value="%s">%s</option>' % (
                 i.pk, i.area_name)
         return HttpResponse(html_response)
+    else:
+        # Gestisci il caso in cui la richiesta non sia AJAX
+        return HttpResponse("This endpoint is only accessible via AJAX.")
+
+
+
+
 
 
 @login_required

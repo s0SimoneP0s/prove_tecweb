@@ -13,18 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+#from django.conf.urls import url, include
+from django.urls import path, include,re_path
 from django.contrib import admin
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name='home'),
-    url(r'^receivepay', views.process_user_sms, name='user_sms'),
-    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^posts/', include('posts.urls', namespace='posts')),
-    url(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
+    re_path('^admin/', admin.site.urls),
+    re_path('^$', views.index, name='home'),
+    re_path('^receivepay', views.process_user_sms, name='user_sms'),
+    re_path('^accounts/', include('accounts.urls', namespace='accounts')),
+    re_path('^accounts/', include('django.contrib.auth.urls')),
+    re_path('^posts/', include('posts.urls', namespace='posts')),
+    re_path('^ratings/', include('star_ratings.urls', namespace='ratings')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
