@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Search Results  {% endblock %}
+
+{% block content %}
+
+{% if object_list %}
+    <ul>
+    {% for q in object_list %}
+    <li><a href="{% url 'polls:detail' q.id %}">{{ q.question_text }}</a></li>
+        <ul>
+            {% for c in q.choices.all %}
+            <li>{{ c.choice_text }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No results.</p>
+{% endif %}
+
+{% endblock %}

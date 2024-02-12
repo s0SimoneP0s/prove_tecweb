@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ object.question_text }}</h1> 
+<ul>
+{% for choice in object.choices.all %}
+    <li>{{ choice.choice_text }} {{ choice.votes}} votes </li> 
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:vote' object.id %}">Give an answer!</a>
+
+{% endblock %}

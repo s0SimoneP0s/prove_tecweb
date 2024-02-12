@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if object_list %}
+    <ul>
+    {% for question in object_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+<footer>
+<br>
+<a href="{% url 'polls:search' %}"> Search a question! </a>
+<br>
+<a href="{% url 'polls:createquestion' %}"> Create a question! </a>
+<br>
+<a href="{% url 'polls:createchoice' %}"> Create an answer! </a>
+<br>
+</footer>
+
+
+{% endblock %}
