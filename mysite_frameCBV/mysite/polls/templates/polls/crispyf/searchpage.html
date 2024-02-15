@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %} 
+{% load crispy_forms_tags %} 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
+{% endblock %}
+
+{% block title %} Search Page Form {% endblock %}
+
+{% block content %}
+
+<center>
+    <h1>Search Page</h1>
+</center>
+
+<div class="d-flex justify-content-center">
+
+<form action="{% url 'polls:search' %}" method="POST">  {% csrf_token %}
+
+    {{form|crispy}}
+
+<input type="submit" value="Search">
+
+</div>
+
+{% endblock %}
