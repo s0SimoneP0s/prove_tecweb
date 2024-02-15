@@ -62,6 +62,7 @@ def create_question(question_text, days):
 
 
 class QuestionViewTests(TestCase):
+  # Gestione caso in cui non ci sono poll nel DB
   def test_index_view_with_no_questions(self):
     """
     No questions --> "No polls are available"
@@ -73,7 +74,34 @@ class QuestionViewTests(TestCase):
     self.assertContains(response, "No polls are available.")
     self.assertQuerysetEqual(response.context['latest_question_list'], [ ]) # Accetta Queryset → liste
 
-    
+
+  # I poll con pub_date passata devono essere mostrati
+  def test_index_view_with_a_past_question(self):
+    """
+    Questions with a pub_date in the past should be
+    displayed
+    """
+    create_question(question="Past question.", days=-30) # Offset negativo
+    response = self.client.get(reverse('polls:index')) #
+    self.assertQuerysetEqual( response.context['latest_question_list'], ['<Question: Past question.>'] )
+                             # self.client (TestCase)
+
+  # I poll con pub_date passata devono essere mostrati
+  def test_index_view_with_a_past_question(self):
+    """
+    Questions with a pub_date in the past should be
+    displayed
+    """
+    create_question(question_text="Future question.", days=30)
+    response = self.client.get(reverse('polls:index')) #
+    self.assertEqual(response.status_code, 200)
+    self.assertContains(response, "No polls are available")
+    self.assertQuerysetEqual( response.context['latest_question_list'], [ ])
+
+
+
+
+
 
 
 
