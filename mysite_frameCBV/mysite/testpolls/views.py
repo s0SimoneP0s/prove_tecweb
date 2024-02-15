@@ -19,7 +19,7 @@ def recent(request, n_polls):
     question_list_ord = Question.objects.order_by('-pub_date')
     latest_question_list = []
     for q in question_list_ord:
-        if q.was_published_recently():
+        if q.was_published_recently(): # pubblica sondaggi futuri BUG deriva da models
             latest_question_list.append(q)
 
     context = {'latest_question_list':latest_question_list[:int(n_polls)]}
