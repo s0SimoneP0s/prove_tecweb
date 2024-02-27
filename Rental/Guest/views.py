@@ -8,7 +8,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
 # from .forms import SignUpForm
 from django.template import loader
-from user.models import *
+from user.models import Room, House
 from datetime import *
 import re
 import os
@@ -184,10 +184,13 @@ def profile(request):
     roomcnt = room.count()
     housecnt = house.count()
     reportcnt = report.count()
+    rooms=None
     if bool(room):
         n = len(room)
         nslide = n // 3 + (n % 3 > 0)
         rooms = [room, range(1, nslide), n]
+    
+    houses=None
     if bool(house):
         n = len(house)
         nslide = n // 3 + (n % 3 > 0)

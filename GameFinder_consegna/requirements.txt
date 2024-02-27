@@ -1,0 +1,7 @@
+whoosh
+nltk
+django
+matplotlib
+pandas
+seaborn
+jupyter

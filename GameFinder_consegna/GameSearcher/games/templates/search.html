@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game finder</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h2>Find Your Game&nbsp;</h2>
+        <img src="{% static 'img/gamepad.png' %}" alt="Logo">
+    </header>
+
+    <p>Explore the vast universe of video games with reviews from our global community.</p>
+    <p>Find the perfect game for you based on authentic opinions and ratings from passionate players around the world!</p><br>
+
+    <form method="get" action="{% url 'search' %}">
+        <label for="query">Search a game:</label>
+        <input type="text" name="query" required>
+        <input type="submit" value="Search">
+
+        <label for="advanced_search">Advanced Search:</label>
+        <input type="checkbox" name="advanced_search" id="advanced_search" value='true'>
+
+    </form>
+
+    {% if query_str %}
+        <h2>Results for "{{ query_str }}"</h2>
+        
+        {% for title, reviews in grouped_results.items %}
+            <h3>{{ title }}</h3>
+            <ul>
+                {% for review in reviews %}
+                    <li>{{ review }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+
+        {% if not grouped_results %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>

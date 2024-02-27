@@ -1,0 +1,29 @@
+UIN 0: game with a good soundtrack
+Query: good AND (soundtrack OR music)
+
+UIN 1: games of horror genre
+Query: horror 
+
+UIN 2: games to play again
+Query: play AND (again OR replay)
+
+UIN 3: best free games
+Query: "best free"~4
+
+UIN 4: fun for child and family
+Query: fun AND child AND family 
+
+UIN 5: games that has multiplayer
+Query: multiplayer OR co op
+
+UIN 6: games that have bugs
+Query: bug*
+
+UIN 7: games that challenge you
+Query: hard OR challenge OR challenging
+    
+UIN 8: games where you can shoot people
+Query: shoot people
+
+UIN 9: games that have more endings
+Query: (more OR different) AND (ending OR end)
