@@ -1,12 +1,11 @@
 django
 faker
 swapper
-star_ratings
 pandas
 seaborn
 matplotlib
-django-braces
-rest_framework
+#django-braces
+django-rest-framework
 crispy-bootstrap4
 django-crispy-forms
 channels
