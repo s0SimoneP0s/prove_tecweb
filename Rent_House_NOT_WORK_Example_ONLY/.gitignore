@@ -1,0 +1,8 @@
+Rent_House/__pycache__/*
+Rent_House/__pycache__/.*
+guest/__pycache__/*
+guest/__pycache__/.*
+__pycache__
+*/pycache_
+*.pyc
+*.pyo

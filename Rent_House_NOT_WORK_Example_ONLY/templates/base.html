@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pagina{% endblock %}</title>
+    <!-- Collegamento al file CSS esterno -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    {%block nav%}
+    <div class="navbar">
+        <!-- <h2> Navigation Bar </h2> -->
+        <a class="nav-link" href="">
+            {% load static %} <img src="{% static 'img/logo.png' %}" alt="Logo">
+        </a>
+
+    </div>
+    {%endblock%}
+    
+    {%block side%}
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <!-- Aggiungi qui eventuali link o altri elementi della sidebar -->
+        </div>
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    {%endblock%}
+    <div class="footerbar">
+        <h2>Footer Bar</h2>
+        <!-- Aggiungi qui eventuali link o altri elementi della footer bar -->
+    </div>
+
+</body>
+</html>
