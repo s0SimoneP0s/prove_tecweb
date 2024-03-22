@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %} 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
+
+{% block title %} L'affitto: {{immobile.nome}} {% endblock %} 
+
+{% block header1 %}
+  <h1>{{immobile}}</h1>
+{% endblock %}
+
+{% block content %} 
+
+{% if "NO_ERRORS" == errore %}
+<div class="alert alert-success" role="alert">
+  L'affitto: è andato a buon fine: hai ora la prenotazione con id {{ prenotazione.pk }}
+{% else %}
+<div class="alert alert-danger" role="alert">
+  Errore Affitto: {{ errore }}
+{% endif %}
+</div>
+
+{% endblock %}
+

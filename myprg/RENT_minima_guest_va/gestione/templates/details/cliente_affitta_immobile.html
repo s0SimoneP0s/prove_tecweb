@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Situazione Affitti {% endblock %} 
+
+{% block header1 %}
+  <h1>Loggato come {{ user.username }} </h1>
+  <p>Benvenuto {{ user.username }}</p> 
+{% endblock %}
+
+{% block content %} 
+<h2> Stato attuale della prenotazione </h2>
+<br>
+{% for l in object_list %}
+  <br>
+  <div class="card">
+    <div class="card-header">
+       Immobile con id {{ l.pk }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ l.nome }} di {{ l.zona }}</h5>
+      <p class="card-text">{{ l }}</p>
+      <a href="{% url 'gestione:pro_affitti' l.pk %}" class="btn btn-info"> Visualizza Dettagli Aggiuntivi </a> 
+    </div>
+  </div>
+  <br>
+{% endfor %} 
+<br>
+{% endblock %}

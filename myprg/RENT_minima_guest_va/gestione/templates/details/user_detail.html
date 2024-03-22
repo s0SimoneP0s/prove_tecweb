@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+{% block title %} {{ view.title }} {% endblock %}
+{% block header1 %}
+    <h1> {{ view.title }} </h1>
+{% endblock %}
+{% block content %} 
+<body>
+    <h4>User info</h4>
+    <p>username: {{ user.username }}</p>
+    <p>First Name: {{ user.first_name }}</p>
+    <p>Last Name: {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+
+    <h2>Edit User</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
+</body>
+</html>
+{% endblock %}

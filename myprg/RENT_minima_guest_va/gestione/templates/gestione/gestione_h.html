@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Pagina di Gestione {% endblock %} 
+
+{% block header1 %}
+
+<div style="text-align: center;">
+  <h1>Home di Gestione</h1>
+  <p>Benvenuto 
+    {% if user.is_authenticated %}
+     {{ user.username }}
+    {% else %}
+    Utente non registrato
+    {% endif %}
+  </p> 
+</div>
+
+{% endblock %}
+
+{% block content %} 
+
+<h4>Scegli l'opzione che preferisci</h2>
+  <br>
+    <div class="list-group">
+      <h8>Opzioni Utente</h2>
+
+      <form action="{% url 'cercaimmobile' %}" method="post" class="list-group-item list-group-item-info">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link">Cerca un immobile</button>
+      </form>
+      <form action="{% url 'listaimmobili' %}" method="get" class="list-group-item list-group-item-info">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link">Lista offerte</button>
+      </form>
+    </div>
+  <br>
+
+    {% if user.is_staff %}
+    <h8>Opzioni Staff</h2>
+    <a href="{% url 'gestione:nuova_zona' %}" class="list-group-item list-group-item-danger">Zone geografiche</a>
+    <br>
+    {% endif %}
+
+  {% if "Proprietari" in user.groups.all.0.name or user.is_staff %}
+  <h8>Opzioni Proprietari</h2>
+  <div class="list-group">
+  </div>
+  <br>
+  {% endif %}
+
+
+
+<br>
+
+{% endblock %}

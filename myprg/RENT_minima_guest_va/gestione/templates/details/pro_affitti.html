@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %} 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
+
+{% block title %} Dettagli di {{object.nome}} {% endblock %} 
+
+{% block header1 %}
+  <h1> {{object}}</h1>
+{% endblock %}
+
+{% block content %} 
+<br>
+<div class="card">
+  <div class="card-header">
+     Immobile con id {{ object.pk }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ object.nome }} di {{object.zona}} </h5>
+    <p class="card-text"> 
+      <ul>
+          {% for c in object.prenotazioni.all %}
+            <li>  Prenotazione con id: {{c.pk}} 
+                {% if c.data_prenotazione  %}
+                  affittato a {{ c.utente.username }} dal {{ c.data_prenotazione }}
+                {% else %} 
+                  Attualmente non in affittati.
+                {% endif %}
+            </li>
+          {% endfor %}
+      </ul>
+    </p>
+  </div>
+</div>
+<br>
+{% endblock %}

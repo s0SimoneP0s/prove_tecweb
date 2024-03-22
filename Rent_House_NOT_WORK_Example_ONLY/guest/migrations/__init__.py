@@ -1,1 +1,0 @@
-print("ESECUZIONE MIGRAZIONE")
