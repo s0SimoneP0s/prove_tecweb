@@ -131,7 +131,3 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 LOGIN_REDIRECT_URL = "/?login=ok"
 LOGIN_URL = "/login/?auth=notok"
-
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-SITE_ID = 1
