@@ -1,0 +1,18 @@
+<!-- myapp/templates/myapp/item_form.html -->
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Item</title>
+
+</head>
+<body>
+    <h1>Create a New Item</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
+</body>
+</html>

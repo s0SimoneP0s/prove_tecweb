@@ -1,0 +1,15 @@
+<!-- myapp/templates/myapp/item_detail.html -->
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Detail</title>
+</head>
+<body>
+    <h1>Item Detail</h1>
+    {% crispy detail_form %}
+    <a href="{% url 'item-list' %}">Back to Item List</a>
+</body>
+</html>
